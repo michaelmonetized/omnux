@@ -1,30 +1,38 @@
-# The M3 GPU is the last wall between Mac owners and a real Linux desktop. Here is our siege plan.
+# We can boot Linux on every M3 Mac. The GPU is the holdout.
 
-*Omnux — the fire of Omarchy on the foundation of Asahi.*
-*Draft for X, 2026-08-25. Filed alongside the blocker map: https://github.com/michaelmonetized/omnux/issues/1*
+*Omnux founder post, draft 2. Unslopped per pstack's unslop skill.*
+*Blocker map: https://github.com/michaelmonetized/omnux/issues/1*
 
 ---
 
-**Where we are.** An M3 Mac today boots Omarchy MX Mac end to end: Apple's iBoot hands off to m1n1, U-Boot takes over, and Linux comes up with NVMe, WiFi, Bluetooth, keyboard, trackpad, and speakers working. You can install it right now from recoveryOS with one command. The desktop runs. It just runs like it's 1998 — because every pixel is software-rendered while we reverse-engineer Apple's newest GPU.
+An M3 MacBook runs our Linux build today. One command from recoveryOS, Apple's installer makes room on the disk, m1n1 hands off to U-Boot, and Linux comes up with the SSD, WiFi, Bluetooth, keyboard, trackpad, and speakers working. The desktop runs too. Software-rendered, which is generous phrasing for how it looks.
 
-**What "done" means.** Native display modesetting through Apple's DCP. Hardware-accelerated OpenGL and Vulkan via an MIT-licensed clean-room driver that Asahi can take wholesale. Hyprland at 60Hz+ on battery without melting the fans. Not a demo. A daily driver.
+That last part is what this post is about.
 
-**The three walls**, and none of them fall from a distance:
+First, what works, because the Asahi Linux folks earned this list and we inherit it gratefully. Install from recoveryOS in about eight minutes. Native NVMe speed. WiFi and Bluetooth. Keyboard, trackpad, speakers with proper safety limiting. Sleep is broken. Display works through a framebuffer Apple set up before Linux ever started, so you get the panel at one resolution with no backlight control worth trusting. It boots, it installs, it stays up. If you want to try it:
 
-1. **The submission model.** How macOS userspace feeds work to the AGX firmware on T603x silicon — queues, doorbells, fault handling. Changed since M2. Unknown.
-2. **The shader ISA.** M3 shipped Dynamic Caching, hardware ray tracing, and mesh shaders. The instruction encoding moved. Dougall Johnson's public ISA work gives us a map; we need the terrain.
-3. **The firmware interface.** Version negotiation and queue management against shipping macOS 14.x/15.x firmware. Every macOS release is a moving target.
+    curl -fsSL https://raw.githubusercontent.com/michaelmonetized/asahi-installer/omnux/scripts/bootstrap-omnux.sh | sh
 
-Each of these is only discoverable **against real hardware**, in a trace loop: boot an M3 into m1n1's proxyclient harness, run GPU workloads under instrumentation on macOS, diff captures against the known M1/M2 models, document, implement clean-room from documented behavior only, validate via kexec, publish upstream first. No amount of code written away from the metal substitutes for that loop. This is why every other attempt stalls — not talent, distance from hardware.
+Now the honest part. "Done" means your M3 renders Hyprland through hardware OpenGL and Vulkan at frame rates you'd expect on battery, through a display driver that owns modesetting and backlight. What stands between here and there is reverse engineering, and I won't pretend otherwise. Three things nobody outside Apple has fully mapped for these chips.
 
-**So we're closing the distance.** Starting today, an owner-feedback program for M3 MacBook Air, MacBook Pro, Mac mini, and Mac Studio machines:
+How work gets submitted. macOS userspace talks to a firmware coprocessor that manages the GPU. On M1 and M2 the community mapped its queues and doorbells. M3 changed that protocol, and until someone traces it on real silicon, any driver would be guessing.
 
-- We ship you **one-command diagnostics software** (`omnux-report`) that documents your machine's experience: verbose success/info/warning/error log dumps, performance benchmarks, and full system architecture data — your choice what leaves your machine.
-- Your reports become the validation matrix that turns "should work" into "works," and your ADT dumps become the device trees that make bring-up possible at all.
-- If you can lend trace-loop access to a machine, you move the entire timeline. That's the bottleneck, full stop.
+What the shaders became. M3 added Dynamic Caching, mesh shaders, and hardware ray tracing. The instruction encoding moved. Dougall Johnson's published ISA research maps much of it, but maps are not terrain. Someone has to compile real shaders, capture what the hardware does, and write down the differences.
 
-Every blocker is now a public issue with acceptance criteria — engineering walls in [omnux-gpu](https://github.com/michaelmonetized/omnux-gpu/issues), the owner program in [omnux](https://github.com/michaelmonetized/omnux/issues). No roadmap-speak, no dates on unfinished science. Just named blockers, named owners, and receipts.
+What the firmware expects. Version negotiation, queue setup, fault reporting against shipping macOS firmware. Every macOS release moves this target.
 
-M1 and M2 users: you already have the whole fire. M3 owners: pick a wall. Let's go break it.
+All three get solved the same way, and there is no shortcut. Boot an M3 into m1n1's proxyclient harness from a second machine. Run GPU workloads under macOS with instrumentation attached. Diff the captures against what we know about M1 and M2. Write down what changed. Implement from the documentation, clean-room, under an MIT license Asahi can absorb wholesale. Boot it with kexec. Repeat until pixels move fast enough to brag about.
 
-*[Omnux](https://github.com/michaelmonetized/omnux) · install today: `curl -fsSL https://raw.githubusercontent.com/michaelmonetized/asahi-installer/omnux/scripts/bootstrap-omnux.sh | sh` · truth table before promises: [SUPPORT.md](https://github.com/michaelmonetized/asahi-installer/blob/omnux/SUPPORT.md)*
+Most attempts at this stall for a boring reason. Not talent. Distance from hardware. So we're removing the distance.
+
+Starting today we run an owner program for M3 machines, all of them: MacBook Air 13 and 15, MacBook Pro 14 and 16, Mac mini, Mac Studio. We ship you one command called omnux-report that collects how your machine actually behaves. Verbose logs at every severity, performance benchmarks, full system architecture data. You choose what leaves your machine, serials and keys scrubbed by default. Your reports turn "should work" into "works" per model. Your ADT dumps become device tree ground truth that bring-up depends on. And if you can lend a machine to the trace loop, even for an afternoon, you shorten this entire project by weeks.
+
+Everything above is now public work with acceptance criteria. Nine engineering blockers in omnux-gpu, eight owner-program issues in the omnux repo, one tracker linking them:
+
+https://github.com/michaelmonetized/omnux/issues/1
+
+I'd love to end with a date. The honest version is that we don't set dates on other people's unfinished science, including ours. What I can promise is that every claim we make will link to a commit, a test result, or a measurement, and anything that stops working gets said out loud in the same place.
+
+M1 and M2 owners, you have the whole thing today. M3 owners, pick an issue. The walls only look load-bearing.
+
+Truth table before promises: https://github.com/michaelmonetized/asahi-installer/blob/omnux/SUPPORT.md
