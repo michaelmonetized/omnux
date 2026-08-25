@@ -1,0 +1,19 @@
+[submodule "m1n1"]
+	path = m1n1
+	url = https://github.com/michaelmonetized/m1n1.git
+[submodule "installer"]
+	path = installer
+	url = https://github.com/michaelmonetized/asahi-installer.git
+[submodule "pkgs"]
+	path = pkgs
+	url = https://github.com/michaelmonetized/PKGBUILDs.git
+[submodule "gpu"]
+	path = gpu
+	url = https://github.com/michaelmonetized/omnux-gpu.git
+[submodule "linux"]
+	path = linux
+	url = https://github.com/michaelmonetized/linux.git
+[submodule "m1n1"]
+	path = m1n1
+	url = https://github.com/michaelmonetized/m1n1.git
+	branch = omnux
