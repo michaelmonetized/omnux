@@ -57,7 +57,11 @@ Make the experimental path reliable enough to stop calling it scary.
 
 ## M5 — USB stick story
 
-- [ ] Bootable rescue/reinstall image (U-Boot external-drive boot), dd-able
+- [~] Bootable rescue/reinstall image (U-Boot external-drive boot), dd-able
+      — *the [`omarchy-mx-mac-iso`](https://github.com/michaelmonetized/omarchy-mx-mac-iso)
+      live image assembles end to end and its installer pipeline is verified
+      against loopback disks (plain + LUKS2, 51 assertions,
+      [PROGRESS 2026-08-25](PROGRESS.md)); hardware boot test pending*
 - [ ] Offline payload mode for airgapped installs via recoveryOS
 - [ ] Direct-USB-boot installer image — contingent on upstream's UEFI-from-USB
       work landing; tracked, not promised
@@ -67,6 +71,8 @@ Make the experimental path reliable enough to stop calling it scary.
 ## Beyond — M4/M5
 
 Blocked on physical-world RE that does not exist yet. Standing order:
-the moment any public patch appears for T604x/T8140/T8132 successors or M5,
+the moment any public patch appears for T604x/T8140/T8132 successors, M5,
+or M6 (Mac mini M6/M5 Pro and Mac Studio M5 Max/Ultra announced 2026-08-25,
+customer availability 2026-09-22 — the earliest possible ADT-dump date),
 it lands in an `omnux` branch within days. See GOAL.md for why we don't
 put dates on other people's unfinished science.

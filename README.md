@@ -27,7 +27,10 @@ Heavyweight code lives in focused components, pinned here by submodule:
 | Installer | [`installer/`](installer) | Omnux-branded installer, curl bootstrap, local release pipeline |
 | Distro packages | [`pkgs/`](pkgs) | PKGBUILDs incl. `linux-omnux`, `omnux` branch |
 | GPU driver attempt | [`gpu/`](gpu) | MIT clean-room M3 GPU project |
+| Live USB image | [`omarchy-mx-mac-iso`](https://github.com/michaelmonetized/omarchy-mx-mac-iso) | Bootable rescue/install stick: Omarchy Quattro rootfs, plan-gated installer (see [PROGRESS](docs/PROGRESS.md)) |
 | Landing page source | [`pages/`](pages) | GitHub Pages site |
+
+Dated work log: [docs/PROGRESS.md](docs/PROGRESS.md).
 
 Clone everything:
 
@@ -47,7 +50,14 @@ Clone everything:
 | M1 / M2 | Daily-drivable, full acceleration |
 | M3 | Experimental install live; GPU/display drivers are the frontier |
 | M4 | Bring-up integrated ahead of upstream; needs hardware ADT dumps |
-| M5 | Nothing public exists anywhere yet; we integrate the moment it does |
+| M5 (base/Pro/Max/Ultra) | Nothing public exists anywhere yet |
+| M6 (announced 2026-08-25, ships 2026-09-22) | Nothing public exists anywhere yet; we integrate the moment it does |
+
+Note on the August 25, 2026 announcements (Mac mini M6/M5 Pro, Mac Studio
+M5 Max/M5 Ultra): new silicon changes nothing about today's install paths —
+the signed boot chain and missing reverse engineering apply to every one of
+these machines. The earliest anyone can dump ADTs for bring-up is the
+September 22 customer availability date. See SUPPORT.md for per-machine truth.
 
 ## License
 
