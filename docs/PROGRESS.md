@@ -3,6 +3,16 @@
 Dated entries, newest first. One bullet per shipped change; every claim
 links to its receipt (STEERING #8).
 
+## 2026-08-25 (later)
+
+**M3 GPU blocker map filed — 17 public issues.** Engineering walls in
+[omnux-gpu](https://github.com/michaelmonetized/omnux-gpu/issues) (#1 trace
+harness … #9 clean-room audit); owner program here (#1 tracker, #2
+`omnux-report` v0 diagnostics bundle, #3 cohort recruitment, #4 ADT dumps,
+#5 boot validation matrix, #6 benchmark corpus, #7 sleep telemetry, #8
+display evidence sweep). Founder announcement drafted:
+[announcements/2026-08-25-m3-gpu-siege-plan.md](announcements/2026-08-25-m3-gpu-siege-plan.md).
+
 ## 2026-08-25
 
 **New silicon announced — truth updated everywhere.** Mac mini M6/M5 Pro and
