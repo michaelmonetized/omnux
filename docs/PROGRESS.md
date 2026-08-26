@@ -3,6 +3,16 @@
 Dated entries, newest first. One bullet per shipped change; every claim
 links to its receipt (STEERING #8).
 
+## 2026-08-26 (TouchID)
+
+**TouchID works on Omarchy — first on any Linux distro.** Community
+contributor @0xBOYD3 confirmed biometric authentication on a T1-chip
+(2016-17 TouchBar) MacBook Pro running Omarchy.
+[x.com receipt](https://x.com/0xBOYD3/status/2092632959807348905)
+(quoting [DHH](https://x.com/dhh/status/2092632959807348905), 63K views).
+Boyd is moving to T2 next, then M2 with TouchBar.
+Support matrix updated with TouchID status per chip family.
+
 ## 2026-08-26
 
 **omnux-report v0.1.0 built and validated** ([omnux-report `aac9244`](https://github.com/michaelmonetized/omnux-report/commit/aac9244),

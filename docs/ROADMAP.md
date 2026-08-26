@@ -68,6 +68,15 @@ Make the experimental path reliable enough to stop calling it scary.
 - **Done when**: one stick rescues any Omnux Mac and installs offline where
   the platform allows.
 
+## Community milestones (parallel track)
+
+- [x] **TouchID on T1** — @0xBOYD3 confirmed biometric auth on Omarchy,
+      first known Linux TouchID implementation (2016-17 TouchBar, T1 chip)
+- [ ] TouchID on T2 — Boyd testing next; same Secure Enclave family, hardened
+- [ ] TouchID on M-series — contingent on SEP firmware research; no public
+      path exists yet. See [SUPPORT.md](../SUPPORT.md#touchid-status) for
+      status per chip family.
+
 ## Beyond — M4/M5
 
 Blocked on physical-world RE that does not exist yet. Standing order:
