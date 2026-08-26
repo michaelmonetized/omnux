@@ -25,7 +25,7 @@ All three get solved the same way. Boot an M3 into m1n1's proxyclient harness fr
 
 Most attempts at this stall because the person writing the driver has no machine to trace. We intend to fix that directly.
 
-Starting today we run an owner program for every M3 model: MacBook Air 13 and 15, MacBook Pro 14 and 16, Mac mini, Mac Studio. We ship you one command called omnux-report that collects how your machine behaves. Verbose logs at every severity, performance benchmarks, full system architecture data. You choose what leaves your machine, serials and keys scrubbed by default. Your reports tell us which models work and which fail, per feature. ADT dumps you volunteer become the device tree data that bring-up depends on. And if you can lend a machine to the trace loop for an afternoon, that helps more than any code written away from hardware.
+Starting today we run an owner program for every M3 model: MacBook Air 13 and 15, MacBook Pro 14 and 16, Mac mini, Mac Studio. We ship you one command called [omnux-report](https://github.com/michaelmonetized/omnux-report) that collects how your machine behaves. Verbose logs at every severity, performance benchmarks, full system architecture data. You choose what leaves your machine, serials and keys scrubbed by default. Your reports tell us which models work and which fail, per feature. ADT dumps you volunteer become the device tree data that bring-up depends on. And if you can lend a machine to the trace loop for an afternoon, that helps more than any code written away from hardware.
 
 All of it is now public work with acceptance criteria. Nine engineering blockers in omnux-gpu, eight owner-program issues in the omnux repo, one tracker linking them:
 
