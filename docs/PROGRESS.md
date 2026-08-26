@@ -3,6 +3,18 @@
 Dated entries, newest first. One bullet per shipped change; every claim
 links to its receipt (STEERING #8).
 
+## 2026-08-26
+
+**omnux-report v0.1.0 built and validated** ([omnux-report `aac9244`](https://github.com/michaelmonetized/omnux-report/commit/aac9244),
+closes the tooling half of [omnux#2](https://github.com/michaelmonetized/omnux/issues/2)).
+Severity-complete logs with a 50 MiB cap, architecture data, opt-in tagged
+benchmarks, ADT helper, consent + default redaction (addresses scrubbed at
+collection so log timestamps survive; secrets matched only as key=value).
+Receipts: complete bundle on real hardware (MacBook Pro 16-inch M1 Pro,
+Omarchy) and a 10-check synthetic-sysroot fixture test. Still open from #2:
+live-image packaging, GPU benchmark paths on machines that have those tools,
+release asset.
+
 ## 2026-08-25 (later)
 
 **M3 GPU blocker map filed — 17 public issues.** Engineering walls in
