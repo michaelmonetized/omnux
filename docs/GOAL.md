@@ -1,5 +1,13 @@
 # GOAL — the north star
 
+## Mandate (August 2026)
+
+From DHH and the Omarchy community: deploy an army of agents to get full
+hardware support on M3-and-beyond Macs as quickly as possible. Owners run
+omnux-report and share telemetry, traces, and ADT dumps upstream; agents
+grind the reverse engineering. Everything else in this document serves
+that mandate.
+
 ## One sentence
 
 A person walks into an Apple Store, buys an M3 MacBook, and walks out running
