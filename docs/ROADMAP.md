@@ -76,6 +76,10 @@ Make the experimental path reliable enough to stop calling it scary.
 - [ ] TouchID on M-series — contingent on SEP firmware research; no public
       path exists yet. See [SUPPORT.md](../SUPPORT.md#touchid-status) for
       status per chip family.
+- [~] **SEP research program** — omnux-gpu #10 tracker; evidence collector
+      live in omnux-report (sep/ section); attack-surface doc #11, T2
+      bridge #12, upstream coordination #14. M-series = hardened SEP work,
+      tracked honestly, not promised.
 
 ## Beyond — M4/M5
 

@@ -3,6 +3,20 @@
 Dated entries, newest first. One bullet per shipped change; every claim
 links to its receipt (STEERING #8).
 
+## 2026-08-26 (SEP program)
+
+**SEP/TouchID research program filed** — [omnux-gpu #10](https://github.com/michaelmonetized/omnux-gpu/issues/10)
+(tracker) with threads #11 attack-surface doc, #12 T2 bridge, #13 evidence
+collection, #14 upstream coordination. T1 breakthrough is the reference;
+M-series TouchID is hardened SEP research and is tracked honestly as such.
+
+**omnux-report SEP evidence collector shipped** ([omnux-report `f9729a6`](https://github.com/michaelmonetized/omnux-report/commit/f9729a6)).
+New `sep/` section: device-tree node names + reg bytes, /dev + /sys bus
+matches, module hints, boot firmware identifiers. Never collects keys,
+tickets, nonces, or biometric material. Triage adds a per-machine `INFO sep`
+line — on the M1 Pro test machine this honestly reports "no SEP-named DT
+node; SEP reached via a mailbox index". Fixture suite now 10/10.
+
 ## 2026-08-26 (TouchID)
 
 **TouchID works on Omarchy — first on any Linux distro.** Community
