@@ -7,8 +7,24 @@ links to its receipt (STEERING #8).
 
 **SEP/TouchID research program filed** — [omnux-gpu #10](https://github.com/michaelmonetized/omnux-gpu/issues/10)
 (tracker) with threads #11 attack-surface doc, #12 T2 bridge, #13 evidence
-collection, #14 upstream coordination. T1 breakthrough is the reference;
-M-series TouchID is hardened SEP research and is tracked honestly as such.
+collection, #14 upstream coordination, #15 verified enablement frontier.
+T1 breakthrough is the reference; M-series TouchID is hardened SEP research
+and is tracked honestly as such.
+
+**SEP enablement frontier verified from first principles** — independent
+research surfaced [apstrand/m2-air-touchid](https://github.com/apstrand/m2-air-touchid)
+(on Omarchy 4.0.1rc1 / linux-asahi 7.1.6, M2 t8112), which has already patched
+the DTB (sep alias + status=okay), got `apple_sep` to bind and probe, then
+proved the deeper wall: **the AP cannot start the halted SEP** — firmware is
+staged (real plaintext AArch64 in `sepfw`), SEP is powered, but `CPU_CONTROL`
+is read-as-zero and write-ignored, i.e. the control page is walled off from
+the AP. So the lever is on the firmware / boot-policy side, not a Linux
+driver fix. Reachable frontier today: m1n1 boot-console RNG-seed line
+(SEPROM alive vs fell back) and macOS `bputil -d` / `ioreg -rc
+AppleSEPManager` to see what an Omnux install's `local-policy-manifest`
+actually permits. Filed as [omnux-gpu #15](https://github.com/michaelmonetized/omnux-gpu/issues/15).
+Honest scope: even past this, the biometric (`stac`) endpoint
+reverse-engineering is the multi-year part.
 
 **omnux-report SEP evidence collector shipped** ([omnux-report `f9729a6`](https://github.com/michaelmonetized/omnux-report/commit/f9729a6)).
 New `sep/` section: device-tree node names + reg bytes, /dev + /sys bus
