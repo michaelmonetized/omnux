@@ -15,6 +15,10 @@ From macOS or recoveryOS:
 
     curl -fsSL https://raw.githubusercontent.com/michaelmonetized/asahi-installer/omnux/scripts/bootstrap-omnux.sh | sh
 
+## Status
+
+See [`STATUS.md`](STATUS.md) for the honest research-umbrella / empty-checkout demotion.
+
 ## Monorepo layout
 
 This repository is the umbrella: docs, steering, tooling, and component wiring.
